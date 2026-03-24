@@ -1,52 +1,53 @@
-import type { Types } from 'mongoose'
+// Supabase / PostgreSQL types — snake_case to match column names
 
-export interface IUser {
-  _id: Types.ObjectId
+export interface User {
+  id: string
   email: string
   name: string
-  passwordHash: string | null
+  password_hash: string | null
   provider: 'credentials' | 'google'
   currency: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: string
+  updated_at: string
 }
 
-export interface ICategory {
-  _id: Types.ObjectId
-  userId: Types.ObjectId | null
+export interface Category {
+  id: string
+  user_id: string | null
   name: string
-  isDefault: boolean
-  isArchived: boolean
-  createdAt: Date
-  updatedAt: Date
+  is_default: boolean
+  is_archived: boolean
+  created_at: string
+  updated_at: string
 }
 
-export interface IExpense {
-  _id: Types.ObjectId
-  userId: Types.ObjectId
-  categoryId: Types.ObjectId
+export interface Expense {
+  id: string
+  user_id: string
+  category_id: string
   amount: number
   description: string
-  notes?: string
-  date: Date
-  isRecurring: boolean
-  createdAt: Date
-  updatedAt: Date
+  notes: string | null
+  date: string
+  is_recurring: boolean
+  created_at: string
+  updated_at: string
 }
 
-export interface ICategoryBreakdown {
-  categoryId: Types.ObjectId
+export type InsertExpense = Omit<Expense, 'id' | 'created_at' | 'updated_at'>
+
+export interface CategoryBreakdown {
+  category_id: string
   total: number
   count: number
 }
 
-export interface IMonthlySummary {
-  _id: Types.ObjectId
-  userId: Types.ObjectId
+export interface MonthlySummary {
+  user_id: string
   year: number
   month: number
-  totalSpent: number
-  expenseCount: number
-  categoryBreakdown: ICategoryBreakdown[]
-  updatedAt: Date
+  total_spent: number
+  expense_count: number
+  category_breakdown: CategoryBreakdown[]
+  updated_at: string
 }
