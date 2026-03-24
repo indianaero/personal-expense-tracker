@@ -2,7 +2,39 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Skill(update-config)",
+      "Bash(rm models/Category.ts models/Expense.ts models/MonthlySummary.ts models/User.ts)",
+      "Bash(rmdir models:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node scripts/seed.mjs)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(node -e \"const p = require\\(''./node_modules/@heroui/react/package.json''\\); console.log\\(p.version\\)\")",
+      "Bash(node -e \"const m = require\\(''''./node_modules/@heroui/react/dist/index.js''''\\); console.log\\(Object.keys\\(m\\).sort\\(\\).join\\(''''\\\\n''''\\)\\)\")",
+      "Bash(node -e \"const m = require\\(''./node_modules/@heroui/react/dist/index.js''\\); console.log\\([''HeroUIProvider'',''CardBody'',''CardHeader'',''Alert'',''Divider'',''heroui''].map\\(k => k + '': '' + \\(k in m\\)\\).join\\(''\\\\n''\\)\\)\")",
+      "Bash(node -e \"console.log\\(require\\(''./node_modules/zod/package.json''\\).version\\)\")",
+      "Bash(npx next:*)",
+      "Bash(xargs cat:*)",
+      "Bash(node -e \"const p = require\\(''./node_modules/@heroui/react/package.json''\\); console.log\\(''peerDeps:'', JSON.stringify\\(p.peerDependencies, null, 2\\)\\)\")",
+      "Bash(npm uninstall:*)",
+      "Bash(echo \"EXIT_CODE:$?\")",
+      "Bash(node -e \"const {heroui} = require\\(''@heroui/react''\\); console.log\\(typeof heroui\\)\")",
+      "Bash(node -e \"const tw = require\\(''tailwindcss/package.json''\\); console.log\\(tw.version\\)\")",
+      "Bash(curl -s http://localhost:3000/login)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__06.-pfn._.css\")",
+      "Bash(grep -c --heroui)",
+      "Bash(curl -s http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__06.-pfn._.css)",
+      "Bash(node -e \"const p = require.resolve\\(''''@heroui/react''''\\); console.log\\(p\\)\")",
+      "Bash(grep -l \"bg-primary\\\\|text-small\\\\|rounded-large\" C:/Users/avino/OneDrive/Desktop/personal-expense-tracker/node_modules/@heroui/react/node_modules/@heroui/theme/dist/*.js)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(ls \"C:/Users/avino/OneDrive/Desktop/personal-expense-tracker/app/\\(auth\\)/register/\")",
+      "Bash(ls \"C:/Users/avino/OneDrive/Desktop/personal-expense-tracker/app/\\(auth\\)/login/\")",
+      "Bash(curl:*)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(taskkill //F //IM node.exe)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "mongodb"
+  ]
 }
