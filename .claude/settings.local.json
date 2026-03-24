@@ -31,7 +31,10 @@
       "Bash(ls \"C:/Users/avino/OneDrive/Desktop/personal-expense-tracker/app/\\(auth\\)/login/\")",
       "Bash(curl:*)",
       "Bash(taskkill /F /IM node.exe)",
-      "Bash(taskkill //F //IM node.exe)"
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(npm test:*)",
+      "Bash(node -e \":*)",
+      "Bash(npx vitest:*)"
     ]
   },
   "enabledMcpjsonServers": [
