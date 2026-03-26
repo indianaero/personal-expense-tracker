@@ -24,7 +24,7 @@ export default async function DashboardPage() {
     <DashboardView
       summary={summary}
       categories={categories}
-      recentExpenses={allExpenses.slice(0, 5)}
+      allExpenses={allExpenses}
       year={year}
       month={month}
     />
