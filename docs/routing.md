@@ -337,7 +337,7 @@ Middleware intercepts every request at the edge before any page or API handler r
 Request arrives
     │
     ▼
-middleware.ts  ──── is path in PUBLIC_PATHS? ──── yes ──▶ NextResponse.next()
+proxy.ts  ──── is path in PUBLIC_PATHS? ──── yes ──▶ NextResponse.next()
     │                                                            │
     no                                           is user authed + hitting /login?
     │                                                            │

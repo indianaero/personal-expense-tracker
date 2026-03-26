@@ -33,7 +33,7 @@ npm install -D @types/bcryptjs
 
 ```
 /
-├── middleware.ts                        # Edge route protection
+├── proxy.ts                             # Edge route protection
 ├── app/
 │   ├── api/
 │   │   └── auth/
@@ -214,12 +214,12 @@ declare module 'next-auth/jwt' {
 
 ---
 
-## 7. Middleware — `middleware.ts`
+## 7. Proxy — `proxy.ts`
 
 The middleware runs at the edge before any route handler. It is the first line of defence. NextAuth v4 exposes `withAuth` for this purpose — it verifies the JWT and calls the `authorized` callback to decide whether to allow or redirect.
 
 ```ts
-// middleware.ts
+// proxy.ts
 import { withAuth } from 'next-auth/middleware'
 import { NextResponse } from 'next/server'
 
