@@ -54,6 +54,18 @@ export function AppNavbar() {
             Expenses
           </Link>
         </NavbarItem>
+        <NavbarItem>
+          <Link
+            href="/categories"
+            className={
+              pathname.startsWith('/categories')
+                ? 'text-primary font-medium'
+                : 'text-foreground'
+            }
+          >
+            Categories
+          </Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">
