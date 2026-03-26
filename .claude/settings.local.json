@@ -31,7 +31,11 @@
       "Bash(ls \"C:/Users/avino/OneDrive/Desktop/personal-expense-tracker/app/\\(auth\\)/login/\")",
       "Bash(curl:*)",
       "Bash(taskkill /F /IM node.exe)",
-      "Bash(taskkill //F //IM node.exe)"
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(npm test:*)",
+      "Bash(ls /c/Users/avino/OneDrive/Desktop/personal-expense-tracker/*.ts)",
+      "Bash(node:*)",
+      "Bash(grep -o exports.[A-Za-z]* /c/Users/avino/OneDrive/Desktop/personal-expense-tracker/node_modules/@heroui/toast/dist/index.js)"
     ]
   },
   "enabledMcpjsonServers": [

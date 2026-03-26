@@ -6,6 +6,7 @@ export default withAuth(
     const { pathname } = req.nextUrl
     const isAuth = !!req.nextauth.token
 
+    // Redirect authenticated users away from auth pages
     const isAuthPage =
       pathname.startsWith('/login') || pathname.startsWith('/register')
 
@@ -20,6 +21,7 @@ export default withAuth(
       authorized({ token, req }) {
         const { pathname } = req.nextUrl
 
+        // Public paths — always allow
         if (
           pathname.startsWith('/login') ||
           pathname.startsWith('/register') ||
@@ -28,6 +30,7 @@ export default withAuth(
           return true
         }
 
+        // All other paths require a valid token
         return !!token
       },
     },
@@ -38,5 +41,6 @@ export default withAuth(
 )
 
 export const config = {
+  // Run on all routes except static assets and Next.js internals
   matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.svg).*)'],
 }
