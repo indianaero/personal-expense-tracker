@@ -2,7 +2,7 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ['@heroui/react', 'lucide-react'],
+    optimizePackageImports: ['@heroui/react', 'lucide-react', 'react-chartjs-2'],
   },
 }
 

@@ -12,11 +12,14 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
+  Button,
   Spinner,
 } from '@heroui/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useSession, signOut } from 'next-auth/react'
+import { useTheme } from 'next-themes'
+import { Sun, Moon } from 'lucide-react'
 
 const NAV_ITEMS = [
   { label: 'Dashboard',  href: '/dashboard' },
@@ -29,6 +32,7 @@ const NAV_ITEMS = [
 export function AppNavbar() {
   const { data: session, status } = useSession()
   const pathname = usePathname()
+  const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <Navbar isBlurred isBordered={false} className="z-40">
@@ -69,6 +73,17 @@ export function AppNavbar() {
       </NavbarContent>
 
       <NavbarContent justify="end">
+        <NavbarItem>
+          <Button
+            isIconOnly
+            variant="light"
+            size="sm"
+            aria-label="Toggle colour theme"
+            onPress={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+          >
+            {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </Button>
+        </NavbarItem>
         {status === 'loading' ? (
           <Spinner size="sm" />
         ) : (
