@@ -29,14 +29,25 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy application source
 COPY . .
 
-# NEXT_PUBLIC_* variables that are inlined at build time must be provided here
-# as build arguments if you ever need a custom value baked in.
-# All other secrets (NEXTAUTH_SECRET, SUPABASE_SERVICE_ROLE_KEY, etc.) must
-# NOT be passed as build arguments — Vercel injects them at runtime.
-ARG NEXT_PUBLIC_SUPABASE_URL
-ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
+# NEXT_PUBLIC_* variables are inlined into the client bundle at build time.
+# Pass real values via --build-arg if you need them baked in; the defaults
+# below are safe placeholders that allow the build to complete in CI where
+# no .env.local is present.
+ARG NEXT_PUBLIC_SUPABASE_URL=https://placeholder.supabase.co
+ARG NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder-anon-key
 ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
 ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+# Server-side environment variables required so Next.js can import and
+# statically analyse route modules (e.g. next-auth config, supabaseAdmin)
+# during the build step. These placeholder values are never used at runtime —
+# Vercel injects real secrets as environment variables at deployment time.
+# They contain no real credentials and pose no security risk in the image.
+ENV NEXTAUTH_SECRET=build-time-placeholder
+ENV NEXTAUTH_URL=http://localhost:3000
+ENV SUPABASE_SERVICE_ROLE_KEY=build-time-placeholder
+ENV GOOGLE_CLIENT_ID=build-time-placeholder
+ENV GOOGLE_CLIENT_SECRET=build-time-placeholder
 
 # Disable Next.js telemetry during build
 ENV NEXT_TELEMETRY_DISABLED=1

@@ -36,7 +36,10 @@
       "Bash(ls /c/Users/avino/OneDrive/Desktop/personal-expense-tracker/*.ts)",
       "Bash(node:*)",
       "Bash(grep -o exports.[A-Za-z]* /c/Users/avino/OneDrive/Desktop/personal-expense-tracker/node_modules/@heroui/toast/dist/index.js)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   },
   "enabledMcpjsonServers": [
