@@ -10,7 +10,6 @@ const config: Config = {
     './node_modules/@heroui/react/node_modules/@heroui/theme/dist/**/*.{js,mjs}',
   ],
   darkMode: 'class',
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   plugins: [heroui()],
 }
 

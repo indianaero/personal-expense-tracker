@@ -1,7 +1,6 @@
 'use server'
 import { supabaseAdmin } from '@/lib/supabaseClient'
 import { RegisterSchema } from '@/lib/schemas'
-import { Errors }         from '@/lib/errors'
 import bcrypt             from 'bcryptjs'
 import type { ActionState } from './types'
 
