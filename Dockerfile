@@ -40,12 +40,16 @@ ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 # Server-side environment variables required so Next.js can import and
 # statically analyse route modules (e.g. next-auth config, supabaseAdmin)
-# during the build step. These placeholder values are never used at runtime —
-# Vercel injects real secrets as environment variables at deployment time.
-# They contain no real credentials and pose no security risk in the image.
+# during the build step. These are never copied to the runner stage and are
+# never used at runtime — Vercel injects the real secrets at deployment time.
+#
+# SUPABASE_SERVICE_ROLE_KEY is declared as an ARG so the workflow can pass
+# the real secret via --build-arg, preventing "supabaseKey is required" when
+# Supabase validates the key against a real project URL.
+ARG SUPABASE_SERVICE_ROLE_KEY=build-time-placeholder
+ENV SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY
 ENV NEXTAUTH_SECRET=build-time-placeholder
 ENV NEXTAUTH_URL=http://localhost:3000
-ENV SUPABASE_SERVICE_ROLE_KEY=build-time-placeholder
 ENV GOOGLE_CLIENT_ID=build-time-placeholder
 ENV GOOGLE_CLIENT_SECRET=build-time-placeholder
 
