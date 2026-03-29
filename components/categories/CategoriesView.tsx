@@ -25,6 +25,26 @@ interface Props {
   categories: Category[]
 }
 
+function EmptyState({ tab, onCreateClick }: { tab: string; onCreateClick: () => void }) {
+  return (
+    <Card>
+      <CardBody className="flex flex-col items-center gap-3 py-12">
+        <p className="text-xl font-semibold">
+          {tab === 'active' ? 'No categories yet' : 'No archived categories'}
+        </p>
+        {tab === 'active' && (
+          <>
+            <p className="text-default-400 text-sm">Create a category to organize your expenses.</p>
+            <Button color="primary" size="sm" onPress={onCreateClick}>
+              Create a category
+            </Button>
+          </>
+        )}
+      </CardBody>
+    </Card>
+  )
+}
+
 export function CategoriesView({ categories: initialCategories }: Props) {
   const [modal, setModal] = useState<ModalState>({ type: 'none' })
   const [archivingId, setArchivingId] = useState<string | null>(null)
@@ -100,33 +120,13 @@ export function CategoriesView({ categories: initialCategories }: Props) {
     )
   }
 
-  function EmptyState({ tab }: { tab: string }) {
-    return (
-      <Card>
-        <CardBody className="flex flex-col items-center gap-3 py-12">
-          <p className="text-xl font-semibold">
-            {tab === 'active' ? 'No categories yet' : 'No archived categories'}
-          </p>
-          {tab === 'active' && (
-            <>
-              <p className="text-default-400 text-sm">Create a category to organize your expenses.</p>
-              <Button color="primary" size="sm" onPress={() => setModal({ type: 'create' })}>
-                Create a category
-              </Button>
-            </>
-          )}
-        </CardBody>
-      </Card>
-    )
-  }
-
   return (
     <>
       <div className="flex flex-col gap-4 p-6">
         <Tabs aria-label="Categories" variant="underlined" color="primary">
           <Tab key="active" title="Active">
             {active.length === 0 ? (
-              <EmptyState tab="active" />
+              <EmptyState tab="active" onCreateClick={() => setModal({ type: 'create' })} />
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 mt-4">
                 {active.map((c) => (
@@ -138,7 +138,7 @@ export function CategoriesView({ categories: initialCategories }: Props) {
 
           <Tab key="archived" title={`Archived${archived.length > 0 ? ` (${archived.length})` : ''}`}>
             {archived.length === 0 ? (
-              <EmptyState tab="archived" />
+              <EmptyState tab="archived" onCreateClick={() => setModal({ type: 'create' })} />
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 mt-4">
                 {archived.map((c) => (

@@ -4,7 +4,7 @@ import { handleApiError } from '@/lib/api'
 import { CreateExpenseSchema } from '@/lib/schemas/expense'
 import { insertExpense, fetchExpensesByUser } from '@/lib/services/expenseService'
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   try {
     const session = await requireSession()
     const expenses = await fetchExpensesByUser(session.user.id)

@@ -190,7 +190,7 @@ describe('authOptions', () => {
       const adapterUser = {} as any
 
       // Act
-      const result = await sessionCallback({ session, token, user: adapterUser, newSession: null, trigger: 'update' })
+      const result = await sessionCallback({ session, token, user: adapterUser, newSession: null, trigger: 'update' }) as Session
 
       // Assert
       expect(result.user.id).toBe('correct-supabase-id')
@@ -204,7 +204,7 @@ describe('authOptions', () => {
       const adapterUser = {} as any
 
       // Act
-      const result = await sessionCallback({ session, token, user: adapterUser, newSession: null, trigger: 'update' })
+      const result = await sessionCallback({ session, token, user: adapterUser, newSession: null, trigger: 'update' }) as Session
 
       // Assert
       expect(result.user.id).toBe('original-id')
@@ -218,7 +218,7 @@ describe('authOptions', () => {
       const adapterUser = {} as any
 
       // Act
-      const result = await sessionCallback({ session, token, user: adapterUser, newSession: null, trigger: 'update' })
+      const result = await sessionCallback({ session, token, user: adapterUser, newSession: null, trigger: 'update' }) as Session
 
       // Assert — user.id is updated but other fields pass through unchanged
       expect(result.user.name).toBe('Test User')

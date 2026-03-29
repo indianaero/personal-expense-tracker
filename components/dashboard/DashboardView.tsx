@@ -11,8 +11,6 @@ import {
   TableRow,
   TableCell,
   Avatar,
-  Listbox,
-  ListboxItem,
   Button,
   Divider,
 } from '@heroui/react'

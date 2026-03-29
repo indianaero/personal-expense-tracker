@@ -51,11 +51,11 @@ vi.mock('next/server', () => ({
 
 // next-auth/middleware — capture the arguments passed to withAuth so we can
 // extract and test the callbacks in isolation.
-let capturedMiddlewareFn: Function | null = null
+let capturedMiddlewareFn: ((...args: unknown[]) => unknown) | null = null
 let capturedOptions: Record<string, unknown> | null = null
 
 vi.mock('next-auth/middleware', () => ({
-  withAuth: vi.fn((middlewareFn: Function, options: Record<string, unknown>) => {
+  withAuth: vi.fn((middlewareFn: (...args: unknown[]) => unknown, options: Record<string, unknown>) => {
     capturedMiddlewareFn = middlewareFn
     capturedOptions = options
     // Return a no-op; we never invoke the HOF result directly in these tests.
@@ -97,7 +97,7 @@ function buildRequest(pathname: string, token: object | null = null) {
  */
 function getAuthorizedCallback(): (args: { token: object | null; req: ReturnType<typeof buildRequest> }) => boolean {
   if (!capturedOptions) throw new Error('capturedOptions is null — middleware.ts was not imported')
-  const callbacks = capturedOptions.callbacks as Record<string, Function>
+  const callbacks = capturedOptions.callbacks as Record<string, (...args: unknown[]) => unknown>
   return callbacks.authorized as (args: { token: object | null; req: ReturnType<typeof buildRequest> }) => boolean
 }
 
@@ -334,8 +334,6 @@ describe('middleware — config export', () => {
 
     // The pattern from docs/auth.md is a negative lookahead — we verify the
     // canonical path would NOT match static assets by checking the regex.
-    const regex = new RegExp(pattern.replace('/((?!', '(?!/(?:').replace(').*)$', ')).*)'))
-
     // Act & Assert — the regex must not match _next/static paths
     // We test the intent of the pattern, not the regex engine mechanics,
     // by verifying the string representation excludes the known static prefix.

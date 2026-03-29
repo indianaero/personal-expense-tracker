@@ -32,6 +32,7 @@ Before forming any plan, you **must** read every relevant file in the `/docs` di
 | `docs/data-mutation.md` | Before writing any Server Action, form submission handler, or data write operation |
 | `docs/data-fetching.md` | Before writing any Server Component, page, or layout that reads data from the database |
 | `docs/charts.md` | Before adding any chart, graph, or data visualisation component |
+| `docs/deployment.md` | Before touching Dockerfile, GitHub Actions workflows, Vercel config, or environment variable setup |
 
 Enforcement rules:
 - **UI work:** Every component must use only the HeroUI components listed in `docs/ui.md`. No custom CSS, no custom primitives, no inline styles. If a design decision is not covered by `docs/ui.md`, ask before inventing something.
