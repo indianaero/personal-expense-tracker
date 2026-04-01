@@ -2,13 +2,14 @@
 import { Listbox, ListboxItem } from '@heroui/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Receipt, Tag, BarChart2, Settings } from 'lucide-react'
+import { LayoutDashboard, Receipt, Tag, BarChart2, CalendarDays, Settings } from 'lucide-react'
 
 const NAV_ITEMS = [
   { label: 'Dashboard',  href: '/dashboard',  Icon: LayoutDashboard },
   { label: 'Expenses',   href: '/expenses',   Icon: Receipt },
   { label: 'Categories', href: '/categories', Icon: Tag },
   { label: 'Reports',    href: '/reports',    Icon: BarChart2 },
+  { label: 'Summary',    href: '/summary',    Icon: CalendarDays },
   { label: 'Settings',   href: '/settings',   Icon: Settings },
 ]
 
