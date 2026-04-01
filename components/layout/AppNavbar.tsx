@@ -26,6 +26,7 @@ const NAV_ITEMS = [
   { label: 'Expenses',   href: '/expenses' },
   { label: 'Categories', href: '/categories' },
   { label: 'Reports',    href: '/reports' },
+  { label: 'Summary',    href: '/summary' },
   { label: 'Settings',   href: '/settings' },
 ]
 
@@ -68,6 +69,18 @@ export function AppNavbar() {
             }
           >
             Categories
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link
+            href="/summary"
+            className={
+              pathname.startsWith('/summary')
+                ? 'text-primary font-medium'
+                : 'text-foreground'
+            }
+          >
+            Summary
           </Link>
         </NavbarItem>
       </NavbarContent>

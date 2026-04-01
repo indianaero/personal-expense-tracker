@@ -1,13 +1,14 @@
 'use client'
 import { usePathname, useRouter } from 'next/navigation'
 import { Tabs, Tab } from '@heroui/react'
-import { LayoutDashboard, Receipt, Tag, BarChart2 } from 'lucide-react'
+import { LayoutDashboard, Receipt, Tag, BarChart2, CalendarDays } from 'lucide-react'
 
 const NAV_ITEMS = [
   { href: '/dashboard',  Icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/expenses',   Icon: Receipt,          label: 'Expenses' },
   { href: '/categories', Icon: Tag,              label: 'Categories' },
   { href: '/reports',    Icon: BarChart2,         label: 'Reports' },
+  { href: '/summary',    Icon: CalendarDays,      label: 'Summary' },
 ]
 
 export function BottomNav() {
