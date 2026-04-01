@@ -12,8 +12,8 @@ import {
   Alert,
   User,
   Chip,
+  addToast,
 } from '@heroui/react'
-import { addToast } from '@heroui/toast'
 import { useTheme } from 'next-themes'
 import { updateProfileAction, updateCurrencyAction } from '@/lib/actions/user'
 import { UpdateUserSchema } from '@/lib/schemas/user'
